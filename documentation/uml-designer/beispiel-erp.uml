@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_gv-oAAJUEeaGRY-VD7cXSg" name="Beispiel-ERP">
+  <packagedElement xmi:type="uml:Node" xmi:id="_m5MB8AJUEeaGRY-VD7cXSg" name="Datenbank">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_6KCnkAJUEeaGRY-VD7cXSg" name="MySQL"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Node" xmi:id="_qeyPoAJUEeaGRY-VD7cXSg" name="Webserver">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_8NMLEAJUEeaGRY-VD7cXSg" name="Apache">
+      <packagedElement xmi:type="uml:Component" xmi:id="_-Cm0kAJUEeaGRY-VD7cXSg" name="Zend Framework 2"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="__pONEAJUEeaGRY-VD7cXSg" name="PHP"/>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Node" xmi:id="_r7alsAJUEeaGRY-VD7cXSg" name="Client">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_DMffgAJVEeaGRY-VD7cXSg" name="Bootstrap 3"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_FPt7gAJVEeaGRY-VD7cXSg" name="jQuery"/>
+  </packagedElement>
+</uml:Model>
