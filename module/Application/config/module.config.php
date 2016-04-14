@@ -50,6 +50,14 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'Application\Service\Bestellen' => function($sl) {
+
+                return new \Application\Service\BestellungService();
+            },
+            'Application\Service\Material' => function($sl) {
+
+                return new \Application\Service\MaterialService();
+            }
         ),
     ),
     'translator' => array(
