@@ -27,7 +27,8 @@ class BestellungController extends AbstractActionController
             $materialien = $materialService->getMaterialien();
 
             // Liste bestellbarer Materialien an View übergeben
-            return array('materialien' => $materialien);
+            return array('materialien' => $materialien,
+                         'success' => $this->params()->fromRoute('success', false));
 
 
         // POST Kontext verarbeitet die Bestellung
