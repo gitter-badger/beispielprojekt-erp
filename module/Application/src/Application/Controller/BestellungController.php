@@ -44,7 +44,7 @@ class BestellungController extends AbstractActionController
             $bestellungService->bestellen($postParams['bezeichnung'], $postParams['material'], $postParams['anzahl']);
 
             // Nach erfolgreichem bestellen, weiterleiten auf das leere Bestellformular
-            $this->redirect()->toRoute('application', array('controller' => 'Bestellung', 'action' => 'bestellen'));
+            $this->redirect()->toRoute('application/wildcard', array('controller' => 'Bestellung', 'action' => 'bestellen', 'success' => 'true'));
         }
 
         throw new \Exception("Es werden hier nur GET oder POST Requests unterstützt.");
