@@ -7,5 +7,6 @@ nbproject
 .idea
 .project
 .settings
+.metadata
 vendor
 composer.phar
