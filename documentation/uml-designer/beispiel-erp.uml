@@ -13,4 +13,24 @@
     <nestedClassifier xmi:type="uml:Component" xmi:id="_DMffgAJVEeaGRY-VD7cXSg" name="Bootstrap 3"/>
     <nestedClassifier xmi:type="uml:Component" xmi:id="_FPt7gAJVEeaGRY-VD7cXSg" name="jQuery"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_chClkAJYEeaFUI-YOFQM1g" name="TCP" memberEnd="_chClkQJYEeaFUI-YOFQM1g _chDMogJYEeaFUI-YOFQM1g" navigableOwnedEnd="_chClkQJYEeaFUI-YOFQM1g _chDMogJYEeaFUI-YOFQM1g">
+    <ownedEnd xmi:id="_chClkQJYEeaFUI-YOFQM1g" name="datenbanks" type="_m5MB8AJUEeaGRY-VD7cXSg" association="_chClkAJYEeaFUI-YOFQM1g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_chDMoAJYEeaFUI-YOFQM1g"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_chDMoQJYEeaFUI-YOFQM1g" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_chDMogJYEeaFUI-YOFQM1g" name="webservers" type="_qeyPoAJUEeaGRY-VD7cXSg" association="_chClkAJYEeaFUI-YOFQM1g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_chDMowJYEeaFUI-YOFQM1g"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_chDMpAJYEeaFUI-YOFQM1g" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dTjAkAJYEeaFUI-YOFQM1g" name="HTTP" memberEnd="_dTjAkQJYEeaFUI-YOFQM1g _dTkOsgJYEeaFUI-YOFQM1g" navigableOwnedEnd="_dTjAkQJYEeaFUI-YOFQM1g _dTkOsgJYEeaFUI-YOFQM1g">
+    <ownedEnd xmi:id="_dTjAkQJYEeaFUI-YOFQM1g" name="webservers" type="_qeyPoAJUEeaGRY-VD7cXSg" association="_dTjAkAJYEeaFUI-YOFQM1g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dTkOsAJYEeaFUI-YOFQM1g"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dTkOsQJYEeaFUI-YOFQM1g" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_dTkOsgJYEeaFUI-YOFQM1g" name="clients" type="_r7alsAJUEeaGRY-VD7cXSg" association="_dTjAkAJYEeaFUI-YOFQM1g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dTlc0AJYEeaFUI-YOFQM1g"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dTlc0QJYEeaFUI-YOFQM1g" value="*"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>
