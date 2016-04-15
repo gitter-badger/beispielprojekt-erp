@@ -58,7 +58,14 @@ return array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
             'Application\Service\Bestellung' => function($sl) {
 
-                return new \Application\Service\BestellungService();
+                // Abhängigkeit zum Materialservice auflösen
+                $materialService = $sl->get('Application\Service\Material');
+
+                $bestellungService = new \Application\Service\BestellungService();
+
+                $bestellungService->setMaterialService($materialService);
+
+                return $bestellungService;
             },
             'Application\Service\Material' => function($sl) {
 
