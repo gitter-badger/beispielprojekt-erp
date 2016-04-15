@@ -1,6 +1,7 @@
 <?php
 namespace Application\Controller;
 
+use Zend\Http\Request;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class BestellungController extends AbstractActionController
@@ -13,7 +14,7 @@ class BestellungController extends AbstractActionController
      */
     public function bestellenAction()
     {
-        /* @var $request Zend_Controller_Request_Http */
+        /* @var $request Request */
         $request = $this->getRequest();
 
         // GET Kontext liefert die Eingabemaske
@@ -39,7 +40,7 @@ class BestellungController extends AbstractActionController
             $bestellungService = $this->getServiceLocator()->get('Application\Service\Bestellung');
 
             // POST Parameter benutzen
-            $postParams = $this->params()->fromPost();
+            $postParams = $request->getPost()->toArray();
 
             // Bestellung ausführen
             $bestellungService->bestellen($postParams['bezeichnung'], $postParams['material'], $postParams['anzahl']);
