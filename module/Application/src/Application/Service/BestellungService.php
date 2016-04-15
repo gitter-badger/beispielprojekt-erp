@@ -17,16 +17,16 @@ class BestellungService
     /**
      * Funktion löst eine Bestellung aus
      * @param string $bezeichnung
-     * @param \Application\Entity\Material $material
+     * @param \Application\Entity\Material $materialId
      * @param integer $anzahl
      */
-    public function bestellen($bezeichnung, $material, $anzahl) {
+    public function bestellen($bezeichnung, $materialId, $anzahl) {
 
         // Neues Bestellung-Objekt erzeugen
         $bestellung = new Bestellung();
 
-        // Material anhand
-        $material =
+        // Material anhand der übergebenen ID finden
+        $material = $this->materialService->getMaterialById($materialId);
 
         // Befüllen mit den übergebenen Parametern
         $bestellung->setMaterial($material);
@@ -46,7 +46,7 @@ class BestellungService
     private function save($bestellung) {
 
         // Speichere die Serialisierte Version dieses Objekts im filesystem
-        file_put_contents("data/objects/". $bestellung->hash(), serialize($bestellung));
+        file_put_contents("data/objects/bestellungen/". $bestellung->hash(). ".obj", serialize($bestellung));
     }
 
     /**
