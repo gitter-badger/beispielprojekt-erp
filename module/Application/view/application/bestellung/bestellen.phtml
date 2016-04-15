@@ -5,15 +5,15 @@ if($this->success == "true") { ?>
 </div>
 <?php } ?>
 
-<form action="" method="post">
+<form action="<?php echo $this->url('application', array('controller' => 'bestellung', 'action' => 'bestellen')); ?>" method="post">
     <div class="form-group">
         <label for="bezeichnung">Bezeichnung</label>
-        <input type="text" class="form-control" id="bezeichnung" placeholder="Bezeichnung">
+        <input type="text" class="form-control" name="bezeichnung" id="bezeichnung" placeholder="Bezeichnung">
         <p class="help-block">Hier wird die Bezeichnung für die Bestellung festgelegt.</p>
     </div>
     <div class="form-group">
         <label for="material">Material</label>
-        <select id="material" class="form-control">
+        <select name="material" id="material" class="form-control">
             <?php
             /* @var $material \Application\Entity\Material */
             foreach($this->materialien as $material) { ?>
@@ -23,9 +23,9 @@ if($this->success == "true") { ?>
     </div>
     <div class="form-group">
         <label for="anzahl">Anzahl</label>
-        <input type="text" class="form-control" id="anzahl">
+        <input type="text" class="form-control" name="anzahl" id="anzahl">
         <p class="help-block">Wieviel brauchen Sie denn davon?</p>
     </div>
 
-    <button type="submit" class="btn btn-default">Bestellen</button>
+    <input type="submit" class="btn btn-default" value="Bestellen" />
 </form>
