@@ -71,4 +71,15 @@ class Material
     {
         $this->preis = $preis;
     }
+
+    /**
+     * Generiert einen eindeutigen Hash für dieses Object
+     * @return string
+     */
+    public function hash() {
+
+        // generiere einen hash anhand der belegten Werte
+        // Hinweis: funktioniert nur wenn alle Properties belegt sind
+        return sha1($this->id . $this->bezeichnung . $this->preis);
+    }
 }

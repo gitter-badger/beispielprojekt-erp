@@ -159,4 +159,14 @@ class Bestellung
     {
         $this->zeitGenehmigt = $zeitGenehmigt;
     }
+
+    /**
+     * Generiert einen hash für diese Bestellung
+     * @return string
+     */
+    public function hash() {
+
+        // Generiere einen für dieses Bestellung Objekt eindeutigen hash
+        return sha1($this->id . $this->id . $this->material->hash() . $this->bezeichnung . $this->anzahl . $this->status . $this->zeitErstellt);
+    }
 }
