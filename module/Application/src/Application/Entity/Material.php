@@ -80,6 +80,6 @@ class Material
 
         // generiere einen hash anhand der belegten Werte
         // Hinweis: funktioniert nur wenn alle Properties belegt sind
-        return sha1($this->id . $this->bezeichnung . $this->preis);
+        return md5($this->id . $this->bezeichnung . $this->preis);
     }
 }
