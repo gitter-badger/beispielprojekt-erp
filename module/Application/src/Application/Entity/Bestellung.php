@@ -145,7 +145,7 @@ class Bestellung
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getZeitGenehmigt()
     {
@@ -153,7 +153,7 @@ class Bestellung
     }
 
     /**
-     * @param DateTime $zeitGenehmigt
+     * @param \DateTime $zeitGenehmigt
      */
     public function setZeitGenehmigt($zeitGenehmigt)
     {
