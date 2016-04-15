@@ -36,4 +36,26 @@ class MaterialService
         // Bestellbare Materialien zurückgeben
         return array($gold, $silber, $kupfer);
     }
+
+    /**
+     * Liefert das Material Object anhand der übergebenen id
+     * @return Material|null
+     */
+    public function getMaterialById($id) {
+
+        // NOTICE: unperformanter Code!...
+
+        // Alle Materialien laden
+        $materialien = $this->getMaterialien();
+
+        /* @var $material Material */
+        foreach($materialien as $material) {
+
+            // ID Abgleich
+            if($material->getId() == $id) {
+
+                return $material;
+            }
+        }
+    }
 }
