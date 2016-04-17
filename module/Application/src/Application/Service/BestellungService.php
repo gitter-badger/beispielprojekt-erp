@@ -10,6 +10,11 @@ use \Application\Entity\Bestellung;
 class BestellungService
 {
     /**
+     * @var \Application\TableGateway\Bestellung
+     */
+    private $bestellungTable;
+    
+    /**
      * @var MaterialService
      */
     private $materialService;
@@ -72,5 +77,21 @@ class BestellungService
     public function setMaterialService($materialService)
     {
         $this->materialService = $materialService;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBestellungTable()
+    {
+        return $this->bestellungTable;
+    }
+
+    /**
+     * @param mixed $bestellungTable
+     */
+    public function setBestellungTable($bestellungTable)
+    {
+        $this->bestellungTable = $bestellungTable;
     }
 }

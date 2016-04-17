@@ -10,11 +10,17 @@ use \Application\Entity\Material;
 class MaterialService
 {
     /**
+     * @var \Application\TableGateway\Material
+     */
+    private $materialTable;
+
+    /**
      * Liefert alle bestellbaren Materialien
      * @return array
      */
     public function getMaterialien() {
 
+        /*
         // Gold
         $gold = new Material();
         $gold->setId(1);
@@ -32,6 +38,11 @@ class MaterialService
         $kupfer->setId(3);
         $kupfer->setBezeichnung("Kupfer");
         $kupfer->setPreis(4304.29); // EUR je Tonne
+
+        */
+
+        var_dump($this->materialTable->select()->toArray());
+        die();
 
         // Bestellbare Materialien zurückgeben
         return array($gold, $silber, $kupfer);
@@ -57,5 +68,21 @@ class MaterialService
                 return $material;
             }
         }
+    }
+
+    /**
+     * @param mixed $materialTable
+     */
+    public function setMaterialTable($materialTable)
+    {
+        $this->materialTable = $materialTable;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaterialTable()
+    {
+        return $this->materialTable;
     }
 }

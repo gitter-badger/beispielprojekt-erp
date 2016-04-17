@@ -58,18 +58,34 @@ return array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
             'Application\Service\Bestellung' => function($sl) {
 
-                // Abhängigkeit zum Materialservice auflösen
-                $materialService = $sl->get('Application\Service\Material');
-
+                // Neuen Bestellung-Service initialisieren
                 $bestellungService = new \Application\Service\BestellungService();
 
-                $bestellungService->setMaterialService($materialService);
+                // Abhängigkeit zum Materialservice auflösen
+                $bestellungService->setMaterialService($sl->get('Application\Service\Material'));
+
+                // TableGateway für Bestellungen benutzen
+                $bestellungService->setBestellungTable($sl->get('Application\TableGateway\Bestellung'));
 
                 return $bestellungService;
             },
             'Application\Service\Material' => function($sl) {
 
-                return new \Application\Service\MaterialService();
+                // neuen Material-Service initialisieren
+                $materialService = new \Application\Service\MaterialService();
+
+                // TableGateway für Material benutzen
+                $materialService->setMaterialTable($sl->get('Application\TableGateway\Material'));
+
+                return $materialService;
+            },
+            'Application\TableGateway\Bestellung' => function($sl) {
+
+                return new \Application\TableGateway\Bestellung();
+            },
+            'Application\TableGateway\Material' => function($sl) {
+
+                return new \Application\TableGateway\Material();
             }
         ),
     ),
