@@ -50,8 +50,15 @@ class BestellungService
      */
     private function save($bestellung) {
 
-        // Speichere die Serialisierte Version dieses Objekts im filesystem
-        file_put_contents("data/objects/bestellungen/". $bestellung->hash(). ".obj", serialize($bestellung));
+        // Speziellen Table Gateway für Bestellungen benutzen
+        $tableGateway = new \Application\TableGateway\Bestellung();
+
+        // Bestellung Entity in die Datenbank schreiben
+        $tableGateway->insert(array("bezeichnung" => $bestellung->getBezeichnung(),
+                                    "material" => $bestellung->getMaterial()->getId(),
+                                    "anzahl" => $bestellung->getAnzahl(),
+                                    "status" => $bestellung->getStatus(),
+                                    "zeitErstellt" => $bestellung->getZeitErstellt()->format(\DateTime::ISO8601)));
     }
 
     /**
