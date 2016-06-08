@@ -65,9 +65,43 @@ class BestellungService
      * Lädt alle gespeicherten Bestellungen
      * @return array
      */
-    private function readAll() {
+    public function readAll() {
 
-        // TODO
+        // Speziellen Table Gateway benutzen
+        $tableGateway = new \Application\TableGateway\Bestellung();
+
+        // Alle Bestellungen abrufen
+        $bestellungenResultSet = $tableGateway->select(array());
+
+        // Leeres array für die geladenen Bestellung-Entities definieren
+        $bestellungen = array();
+
+        // Alle Bestellungen von array in entities umwandeln
+        foreach($bestellungenResultSet->toArray() as $bestellung) {
+
+            // Neue Bestellung Entity
+            $bestellungEntity = new Bestellung();
+
+            $bestellungEntity->setId($bestellung['id']);
+            $bestellungEntity->setBezeichnung($bestellung['bezeichnung']);
+            $bestellungEntity->setAnzahl($bestellung['anzahl']);
+            $bestellungEntity->setStatus($bestellung['status']);
+            $bestellungEntity->setZeitErstellt(new \DateTime($bestellung['zeitErstellt']));
+
+            if($bestellung['zeitGenehmigt']) {
+                $bestellungEntity->setZeitGenehmigt(new \DateTime($bestellung['zeitGenehmigt']));
+            }
+
+            // Verknüpftes Material entity laden
+            $materialEntity = $this->materialService->getMaterialById($bestellung['material']);
+            $bestellungEntity->setMaterial($materialEntity);
+
+            // Entity in Result array einfügen
+            $bestellungen[] = $bestellungEntity;
+        }
+
+        // Alle Bestellungen als Entities zurückgeben
+        return $bestellungen;
     }
 
     /**
