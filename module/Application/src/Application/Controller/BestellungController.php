@@ -3,9 +3,25 @@ namespace Application\Controller;
 
 use Zend\Http\Request;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class BestellungController extends AbstractActionController
 {
+
+    /**
+     * @var ServiceLocatorInterface
+     */
+    protected $serviceLocator;
+
+    /**
+     * BestellungController constructor.
+     * @param $serviceLocator ServiceLocatorInterface
+     */
+    public function __construct($serviceLocator) {
+
+        $this->serviceLocator = $serviceLocator;
+    }
+
     /**
      * Diese Action dient dazu die Daten für eine Bestellung aufzunehmen
      * und den sntprechenden Prozess zu starten
@@ -22,7 +38,7 @@ class BestellungController extends AbstractActionController
 
             // Material Service benutzen
             /* @var $materialService \Application\Service\MaterialService */
-            $materialService = $this->getServiceLocator()->get('Application\Service\Material');
+            $materialService = $this->serviceLocator->get('Application\Service\Material');
 
             // Bestellbare Materialien laden
             $materialien = $materialService->getMaterialien();
@@ -37,7 +53,7 @@ class BestellungController extends AbstractActionController
 
             // Bestellung Service benutzen
             /* @var $bestellungService \Application\Service\BestellungService */
-            $bestellungService = $this->getServiceLocator()->get('Application\Service\Bestellung');
+            $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
 
             // POST Parameter benutzen
             $postParams = $request->getPost()->toArray();

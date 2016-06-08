@@ -102,8 +102,13 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => Controller\IndexController::class,
-            'Application\Controller\Bestellung' => Controller\BestellungController::class
         ),
+        'factories' => array(
+            'Application\Controller\Bestellung' => function($serviceLocator) {
+
+                return new Controller\BestellungController($serviceLocator);
+            }
+        )
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
