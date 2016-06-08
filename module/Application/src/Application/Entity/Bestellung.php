@@ -129,7 +129,7 @@ class Bestellung
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getZeitErstellt()
     {
@@ -137,7 +137,7 @@ class Bestellung
     }
 
     /**
-     * @param DateTime $zeitErstellt
+     * @param ßDateTime $zeitErstellt
      */
     public function setZeitErstellt($zeitErstellt)
     {
