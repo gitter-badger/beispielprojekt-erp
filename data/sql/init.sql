@@ -11,7 +11,7 @@ CREATE TABLE data.bestellung
     bezeichnung VARCHAR(255),
     material INT,
     anzahl INT,
-    status INT,
+    status VARCHAR(10),
     zeitErstellt DATETIME,
     zeitGenehmigt DATETIME,
     CONSTRAINT bestellung_material_id_fk FOREIGN KEY (material) REFERENCES data.material (id)
