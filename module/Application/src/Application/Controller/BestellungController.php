@@ -67,4 +67,20 @@ class BestellungController extends AbstractActionController
 
         throw new \Exception("Es werden hier nur GET oder POST Requests unterstützt.");
     }
+
+    /**
+     * Diese Action dient dazu Bestellungen zu genehmigen
+     * @return array
+     */
+    public function genehmigenAction() {
+
+        // Bestellung servive benutzen
+        /* @var $bestellungService \Application\Service\BestellungService */
+        $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
+
+        // ..um alle "neuen" Bestellungen zu laden
+        $bestellungen = $bestellungService->readAll();
+
+        return array("bestellungen" => $bestellungen);
+    }
 }
