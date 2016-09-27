@@ -79,7 +79,7 @@ class BestellungController extends AbstractActionController
         $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
 
         // ..um alle "neuen" Bestellungen zu laden
-        $bestellungen = $bestellungService->readAll();
+        $bestellungen = $bestellungService->getBestellungen();
 
         return array("bestellungen" => $bestellungen);
     }
@@ -101,7 +101,7 @@ class BestellungController extends AbstractActionController
         $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
 
         // Datensatz-Entity der ausgewählten Bestellung laden
-        $bestellung = $bestellungService->read($queryParams['id']);
+        $bestellung = $bestellungService->getBestellungById($queryParams['id']);
 
         // Bestellung genehmigen
         $bestellungService->genehmigen($bestellung);

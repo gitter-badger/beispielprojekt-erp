@@ -99,7 +99,7 @@ class BestellungService
      * Lädt alle gespeicherten Bestellungen
      * @return array
      */
-    public function readAll() {
+    public function getBestellungen() {
 
         // Speziellen Table Gateway benutzen
         $tableGateway = new \Application\TableGateway\Bestellung();
@@ -144,7 +144,7 @@ class BestellungService
      * @return Bestellung
      * @throws EmptyResultException
      */
-    public function read($bestellungId) {
+    public function getBestellungById($bestellungId) {
 
         // Speziellen Table Gateway benutzen
         $tableGateway = new \Application\TableGateway\Bestellung();
