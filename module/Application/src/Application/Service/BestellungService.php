@@ -170,6 +170,10 @@ class BestellungService
         $bestellungEntity->setZeitErstellt(new \DateTime($bestellungData['zeitErstellt']));
         $bestellungEntity->setZeitGenehmigt(new \DateTime($bestellungData['zeitGenehmigt']));
 
+        // Material Entity laden und vekrnüpfen
+        $materialEntity = $this->materialService->getMaterialById($bestellungData['material']);
+        $bestellungEntity->setMaterial($materialEntity);
+
         // Mit Daten befüllte Entity zurückgeben
         return $bestellungEntity;
     }
