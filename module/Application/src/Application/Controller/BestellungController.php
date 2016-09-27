@@ -69,10 +69,10 @@ class BestellungController extends AbstractActionController
     }
 
     /**
-     * Diese Action dient dazu Bestellungen zu genehmigen
+     * Diese Action zeigt eine Übersicht aller Betsellungen
      * @return array
      */
-    public function genehmigenAction() {
+    public function uebersichtAction() {
 
         // Bestellung servive benutzen
         /* @var $bestellungService \Application\Service\BestellungService */
@@ -82,5 +82,32 @@ class BestellungController extends AbstractActionController
         $bestellungen = $bestellungService->readAll();
 
         return array("bestellungen" => $bestellungen);
+    }
+
+    /**
+     * Diese Action genehmigt Bestellungen
+     * @return array
+     */
+    public function genehmigenAction() {
+
+        /* @var $request Request */
+        $request = $this->getRequest();
+
+        // GET Parameter benutzen
+        $queryParams = $request->getQuery()->toArray();
+
+
+        // Bestellung servive benutzen
+        /* @var $bestellungService \Application\Service\BestellungService */
+        $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
+
+        // Datensatz-Entity der ausgewählten Bestellung laden
+        $bestellung = $bestellungService->read($queryParams['id']);
+
+        // Bestellung genehmigen
+        $bestellungService->genehmigen($bestellung);
+
+        // Weiterleitung zur Übersichtsseite mit success Parameter
+        return $this->redirect()->toRoute('application/wildcard', array('action' => 'uebersicht', 'genehmigt' => 'true'));
     }
 }
