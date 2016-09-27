@@ -93,9 +93,8 @@ class BestellungController extends AbstractActionController
         /* @var $request Request */
         $request = $this->getRequest();
 
-        // GET Parameter benutzen
-        $queryParams = $request->getQuery()->toArray();
-
+        // Route Parameter benutzen
+        $queryParams = $this->params()->fromRoute();
 
         // Bestellung servive benutzen
         /* @var $bestellungService \Application\Service\BestellungService */
