@@ -2,6 +2,7 @@
 namespace Application\Service;
 
 use \Application\Entity\Bestellung;
+use Application\Exception\EmptyResultException;
 
 /**
  * Diese Service-Klasse ist dafür gedacht, sich umalles zu kümmern,
@@ -45,6 +46,21 @@ class BestellungService
     }
 
     /**
+     * Funktion setzt die Bestellung auf Status genehmigt
+     *
+     * @param $bestellung Bestellung
+     */
+    public function genehmigen($bestellung) {
+
+        // Status der Bestellung auf "genehmigt" ändern
+        $bestellung->setStatus("genehmigt");
+        $bestellung->setZeitGenehmigt(new \DateTime());
+
+        // Datensatz mit geänderten Daten aktualisieren
+        $this->update($bestellung);
+    }
+
+    /**
      * Speichert die übergebene Bestellung
      * @param $bestellung Bestellung
      */
@@ -59,6 +75,24 @@ class BestellungService
                                     "anzahl" => $bestellung->getAnzahl(),
                                     "status" => $bestellung->getStatus(),
                                     "zeitErstellt" => $bestellung->getZeitErstellt()->format(\DateTime::ISO8601)));
+    }
+
+    /**
+     * Aktualisiert die bereits vorhandnen Daten in der Datenbank
+     * @param $bestellung Bestellung
+     */
+    private function update($bestellung) {
+
+        // Speziellen Table Gateway für Bestellungen benutzen
+        $tableGateway = new \Application\TableGateway\Bestellung();
+
+        // Kompletten Datensatz mit geänderten Werten aktualisieren
+        $tableGateway->update(array("bezeichnung" => $bestellung->getBezeichnung(),
+                                    "material" => $bestellung->getMaterial()->getId(),
+                                    "anzahl" => $bestellung->getAnzahl(),
+                                    "status" => $bestellung->getStatus(),
+                                    "zeitGenehmigt" => $bestellung->getZeitGenehmigt()->format(\DateTime::ISO8601)),
+                              array("id" => $bestellung->getId()));
     }
 
     /**
@@ -102,6 +136,42 @@ class BestellungService
 
         // Alle Bestellungen als Entities zurückgeben
         return $bestellungen;
+    }
+
+    /**
+     * Lädt Datensatz anhand der übergebenen ID aus der Datenbank
+     * @param $bestellungId integer
+     * @return Bestellung
+     * @throws EmptyResultException
+     */
+    public function read($bestellungId) {
+
+        // Speziellen Table Gateway benutzen
+        $tableGateway = new \Application\TableGateway\Bestellung();
+
+        // Alle Bestellungen abrufen
+        $bestellungenResultSet = $tableGateway->select(array("id" => $bestellungId));
+
+        // Exception werfen falls keine Daten gefunden
+        if($bestellungenResultSet->count() == 0) {
+            throw new EmptyResultException();
+        }
+
+        // Greife auf das erste Ergebnis in der Ergebnismenge zu
+        $bestellungData = $bestellungenResultSet->current();
+
+        // ...und befülle ein Entity Objekt damit
+        $bestellungEntity = new Bestellung();
+
+        $bestellungEntity->setId($bestellungData['id']);
+        $bestellungEntity->setBezeichnung($bestellungData['bezeichnung']);
+        $bestellungEntity->setAnzahl($bestellungData['anzahl']);
+        $bestellungEntity->setStatus($bestellungData['status']);
+        $bestellungEntity->setZeitErstellt(new \DateTime($bestellungData['zeitErstellt']));
+        $bestellungEntity->setZeitGenehmigt(new \DateTime($bestellungData['zeitGenehmigt']));
+
+        // Mit Daten befüllte Entity zurückgeben
+        return $bestellungEntity;
     }
 
     /**
