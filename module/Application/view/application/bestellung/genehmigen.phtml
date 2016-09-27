@@ -31,7 +31,7 @@ if($this->success == "true") { ?>
                 if($bestellung->getZeitGenehmigt()) {
                     echo $bestellung->getZeitGenehmigt()->format(\DateTime::ISO8601);
                 } ?></td>
-            <td>Genehmigen</td>
+            <td><?php if($bestellung->getStatus() == "neu") { ?>Genehmigen<?php } ?></td>
         </tr>
         <?php } ?>
     </tbody>
