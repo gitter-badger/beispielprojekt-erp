@@ -107,6 +107,6 @@ class BestellungController extends AbstractActionController
         $bestellungService->genehmigen($bestellung);
 
         // Weiterleitung zur Übersichtsseite mit success Parameter
-        return $this->redirect()->toRoute('application/wildcard', array('action' => 'uebersicht', 'genehmigt' => 'true'));
+        return $this->redirect()->toRoute('application/wildcard', array('controller' => 'Bestellung', 'action' => 'uebersicht', 'genehmigt' => 'true'));
     }
 }
