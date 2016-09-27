@@ -31,7 +31,9 @@ if($this->success == "true") { ?>
                 if($bestellung->getZeitGenehmigt()) {
                     echo $bestellung->getZeitGenehmigt()->format(\DateTime::ISO8601);
                 } ?></td>
-            <td><?php if($bestellung->getStatus() == "neu") { ?>Genehmigen<?php } ?></td>
+            <td><?php if($bestellung->getStatus() == "neu") { ?>
+                    <a href="<?php echo $this->url('application/wildcard', array('controller' => 'Bestellung', 'action' => 'genehmigen', 'id' => $bestellung->getId())); ?>">Genehmigen</a>
+                <?php } ?></td>
         </tr>
         <?php } ?>
     </tbody>
