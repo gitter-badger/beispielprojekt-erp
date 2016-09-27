@@ -19,7 +19,9 @@ if($this->success == "true") { ?>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($this->bestellungen as $bestellung) { ?>
+        <?php
+        /** @var \Application\Entity\Bestellung $bestellung */
+        foreach($this->bestellungen as $bestellung) { ?>
         <tr>
             <td><?php echo $bestellung->getId(); ?></td>
             <td><?php echo $bestellung->getBezeichnung(); ?></td>
