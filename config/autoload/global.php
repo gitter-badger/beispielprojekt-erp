@@ -10,4 +10,7 @@ return array(
             }
         ),
     ),
+    'php_settings' => array(
+        'date.timezone' => 'Europe/Berlin'
+    )
 );

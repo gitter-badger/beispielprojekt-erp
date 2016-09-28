@@ -64,6 +64,9 @@ return array(
                 // Abhängigkeit zum Materialservice auflösen
                 $bestellungService->setMaterialService($sl->get('Application\Service\Material'));
 
+                // Abhängigkeit zum Mail-Service auflösen
+                $bestellungService->setMailService($sl->get('Application\Service\Mail'));
+
                 // TableGateway für Bestellungen benutzen
                 $bestellungService->setBestellungTable($sl->get('Application\TableGateway\Bestellung'));
 
@@ -78,6 +81,13 @@ return array(
                 $materialService->setMaterialTable($sl->get('Application\TableGateway\Material'));
 
                 return $materialService;
+            },
+            'Application\Service\Mail' => function($serviceLocator) {
+
+                // Config laden
+                $config = $serviceLocator->get('Config');
+
+                return new \Application\Service\MailService($config);
             },
             'Application\TableGateway\Bestellung' => function($sl) {
 

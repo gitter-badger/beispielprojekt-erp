@@ -21,6 +21,11 @@ class BestellungService
     private $materialService;
 
     /**
+     * @var MailService
+     */
+    private $mailService;
+
+    /**
      * Funktion löst eine Bestellung aus
      * @param string $bezeichnung
      * @param \Application\Entity\Material $materialId
@@ -58,6 +63,9 @@ class BestellungService
 
         // Datensatz mit geänderten Daten aktualisieren
         $this->update($bestellung);
+
+        // E-Mail Benachrichtigung versenden
+        $this->mailService->benachrichtigen($bestellung);
     }
 
     /**
@@ -192,6 +200,22 @@ class BestellungService
     public function setMaterialService($materialService)
     {
         $this->materialService = $materialService;
+    }
+
+    /**
+     * @return MailService
+     */
+    public function getMailService()
+    {
+        return $this->mailService;
+    }
+
+    /**
+     * @param MailService $mailService
+     */
+    public function setMailService($mailService)
+    {
+        $this->mailService = $mailService;
     }
 
     /**

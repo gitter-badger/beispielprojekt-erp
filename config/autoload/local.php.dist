@@ -12,4 +12,22 @@
  */
 
 return array(
+    'mail' => array(
+        'transport' => array(
+            'options' => array(
+                'host'              => '***.***.***.***',
+                'port'              => '587',
+                'connection_class'  => 'login',
+                'connection_config' => array(
+                    'username' => '***',
+                    'password' => '***',
+                    'ssl' => 'tls'
+                ),
+            )
+        ),
+        'service' => array(
+            'sender' => 'sender@trashmail.de',
+            'recipient' => 'recipient@trashmail.de'
+        )
+    ),
 );
