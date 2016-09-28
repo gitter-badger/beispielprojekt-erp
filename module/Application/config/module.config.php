@@ -9,6 +9,8 @@
 
 namespace Application;
 
+use Application\Service\ReportService;
+
 return array(
     'router' => array(
         'routes' => array(
@@ -89,6 +91,16 @@ return array(
 
                 return new \Application\Service\MailService($config);
             },
+            'Application\Service\Report' => function($serviceLocator) {
+
+                // Neuen Report-Service initialisieren
+                $reportService = new \Application\Service\ReportService();
+
+                // Abhängigkeit zu Bestellung-Service auflösen
+                $reportService->setBestellungService($serviceLocator->get('Application\Service\Bestellung'));
+
+                return $reportService;
+            },
             'Application\TableGateway\Bestellung' => function($sl) {
 
                 return new \Application\TableGateway\Bestellung();
@@ -117,6 +129,10 @@ return array(
             'Application\Controller\Bestellung' => function($serviceLocator) {
 
                 return new Controller\BestellungController($serviceLocator);
+            },
+            'Application\Controller\Report' => function($serviceLocator) {
+
+                return new Controller\ReportController($serviceLocator);
             }
         )
     ),
