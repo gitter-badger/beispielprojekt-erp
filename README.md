@@ -1,4 +1,5 @@
 [![Dependency Status](https://gemnasium.com/badges/github.com/akramer-dozent/beispielprojekt-erp.svg)](https://gemnasium.com/github.com/akramer-dozent/beispielprojekt-erp)
+[![Code Climate](https://codeclimate.com/github/akramer-dozent/beispielprojekt-erp/badges/gpa.svg)](https://codeclimate.com/github/akramer-dozent/beispielprojekt-erp)
 
 # Unser tolles ERP System
 
