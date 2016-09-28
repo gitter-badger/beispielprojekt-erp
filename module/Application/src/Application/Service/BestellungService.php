@@ -63,6 +63,9 @@ class BestellungService
 
         // Datensatz mit geänderten Daten aktualisieren
         $this->update($bestellung);
+
+        // E-Mail Benachrichtigung versenden
+        $this->mailService->benachrichtigen($bestellung);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 namespace Application\Service;
 use Application\Entity\Bestellung;
+use Zend\Mail\Transport\SmtpOptions;
 
 /**
  * Class MailService
@@ -33,12 +34,16 @@ class MailService
      */
     public function __construct($config) {
 
-        // Sendmail für den Transport benutzen
-        $this->mailTransport = new \Zend\Mail\Transport\Sendmail();
+        // SMTP Optionen konfigurieren
+        $smtpOptions = new SmtpOptions($config['mail']['transport']['options']);
+
+        // SMTP für den Transport benutzen
+        $this->mailTransport = new \Zend\Mail\Transport\Smtp($smtpOptions);
+
 
         // E-Mail Empfänger und Sender aus Konfiguration laden
-        $this->sender = $config['mail_service']['sender'];
-        $this->recipient = $config['mail_service']['recipient'];
+        $this->sender = $config['mail']['service']['sender'];
+        $this->recipient = $config['mail']['service']['recipient'];
     }
 
     /**
@@ -50,9 +55,10 @@ class MailService
 
         // Nachricht zusammenstellen
         $mail = new \Zend\Mail\Message();
-        $mail->setBody('This is the text of the mail.')
-             ->setFrom($this->sender, 'Beispielprojekt ERP')
-             ->addTo($this->recipient, 'Empfänger')
+        $mail->setBody("Die nachfolgende Bestellung wurde genehmigt.\n\nBezeichnung: ". $bestellung->getBezeichnung(). "\nErstellt am: ". $bestellung->getZeitErstellt()->format("F j, Y, g:i a"))
+             ->setEncoding('UTF-8')
+             ->setFrom($this->sender)
+             ->addTo($this->recipient)
              ->setSubject('Bestellung genehmigt');
 
         // E-Mail versenden
