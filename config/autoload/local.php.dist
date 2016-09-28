@@ -12,4 +12,8 @@
  */
 
 return array(
+    'mail_service' => array(
+        'sender' => 'sender@trashmail.de',
+        'recipient' => 'recipient@trashmail.de'
+    )
 );
