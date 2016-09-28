@@ -1,0 +1,42 @@
+<?php
+if($this->success == "true") { ?>
+<div class="alert alert-success alert-dismissible" role="alert">Bestellung ist eingetütet.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<?php } ?>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Bezeichnung</th>
+            <th>Material</th>
+            <th>Anzahl</th>
+            <th>Status</th>
+            <th>Erstellt am</th>
+            <th>Genehmigt am</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        /** @var \Application\Entity\Bestellung $bestellung */
+        foreach($this->bestellungen as $bestellung) { ?>
+        <tr>
+            <td><?php echo $bestellung->getId(); ?></td>
+            <td><?php echo $bestellung->getBezeichnung(); ?></td>
+            <td><?php echo $bestellung->getMaterial()->getBezeichnung(); ?></td>
+            <td><?php echo $bestellung->getAnzahl(); ?></td>
+            <td><?php echo $bestellung->getStatus(); ?></td>
+            <td><?php echo $bestellung->getZeitErstellt()->format(\DateTime::ISO8601); ?></td>
+            <td><?php
+                if($bestellung->getZeitGenehmigt()) {
+                    echo $bestellung->getZeitGenehmigt()->format(\DateTime::ISO8601);
+                } ?></td>
+            <td><?php if($bestellung->getStatus() == "neu") { ?>
+                    <a href="<?php echo $this->url('application/wildcard', array('controller' => 'Bestellung', 'action' => 'genehmigen', 'id' => $bestellung->getId())); ?>">Genehmigen</a>
+                <?php } ?></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>

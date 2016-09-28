@@ -38,13 +38,13 @@ class Bestellung
 
     /**
      * Zeitpunkt, wann die Bestellung erstellt wurde
-     * @var DateTime
+     * @var \DateTime
      */
     private $zeitErstellt;
 
     /**
      * Zeitpunkt, wann die Bestellung genehmigt wurde
-     * @var DateTime
+     * @var \DateTime
      */
     private $zeitGenehmigt;
 
@@ -129,7 +129,7 @@ class Bestellung
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getZeitErstellt()
     {
@@ -137,7 +137,7 @@ class Bestellung
     }
 
     /**
-     * @param DateTime $zeitErstellt
+     * @param \DateTime $zeitErstellt
      */
     public function setZeitErstellt($zeitErstellt)
     {
@@ -145,7 +145,7 @@ class Bestellung
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getZeitGenehmigt()
     {
@@ -153,10 +153,20 @@ class Bestellung
     }
 
     /**
-     * @param DateTime $zeitGenehmigt
+     * @param \DateTime $zeitGenehmigt
      */
     public function setZeitGenehmigt($zeitGenehmigt)
     {
         $this->zeitGenehmigt = $zeitGenehmigt;
+    }
+
+    /**
+     * Generiert einen hash für diese Bestellung
+     * @return string
+     */
+    public function hash() {
+
+        // Generiere einen für dieses Bestellung Objekt eindeutigen hash
+        return md5($this->id . $this->material->hash() . $this->zeitErstellt->getTimestamp());
     }
 }

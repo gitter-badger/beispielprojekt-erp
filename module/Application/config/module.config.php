@@ -58,11 +58,34 @@ return array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
             'Application\Service\Bestellung' => function($sl) {
 
-                return new \Application\Service\BestellungService();
+                // Neuen Bestellung-Service initialisieren
+                $bestellungService = new \Application\Service\BestellungService();
+
+                // Abhängigkeit zum Materialservice auflösen
+                $bestellungService->setMaterialService($sl->get('Application\Service\Material'));
+
+                // TableGateway für Bestellungen benutzen
+                $bestellungService->setBestellungTable($sl->get('Application\TableGateway\Bestellung'));
+
+                return $bestellungService;
             },
             'Application\Service\Material' => function($sl) {
 
-                return new \Application\Service\MaterialService();
+                // neuen Material-Service initialisieren
+                $materialService = new \Application\Service\MaterialService();
+
+                // TableGateway für Material benutzen
+                $materialService->setMaterialTable($sl->get('Application\TableGateway\Material'));
+
+                return $materialService;
+            },
+            'Application\TableGateway\Bestellung' => function($sl) {
+
+                return new \Application\TableGateway\Bestellung();
+            },
+            'Application\TableGateway\Material' => function($sl) {
+
+                return new \Application\TableGateway\Material();
             }
         ),
     ),
@@ -79,8 +102,13 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => Controller\IndexController::class,
-            'Application\Controller\Bestellung' => Controller\BestellungController::class
         ),
+        'factories' => array(
+            'Application\Controller\Bestellung' => function($serviceLocator) {
+
+                return new Controller\BestellungController($serviceLocator);
+            }
+        )
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

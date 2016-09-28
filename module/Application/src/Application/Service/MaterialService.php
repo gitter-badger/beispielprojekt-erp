@@ -10,30 +10,72 @@ use \Application\Entity\Material;
 class MaterialService
 {
     /**
+     * @var \Application\TableGateway\Material
+     */
+    private $materialTable;
+
+    /**
      * Liefert alle bestellbaren Materialien
      * @return array
      */
     public function getMaterialien() {
 
-        // Gold
-        $gold = new Material();
-        $gold->setId(1);
-        $gold->setBezeichnung("Gold");
-        $gold->setPreis(1088.41);   // EUR je Feinunze
+        // Leeren array für die verfügbaren Materialien definieren
+        $materialArray = array();
 
-        // Silber
-        $silber = new Material();
-        $silber->setId(2);
-        $silber->setBezeichnung("Silber");
-        $silber->setPreis(14.33);   // EUR je Feinunze
+        // Materialdaten in entities verbacken
+        foreach($this->materialTable->select()->toArray() as $idx => $material) {
 
-        // Kupfer
-        $kupfer = new Material();
-        $kupfer->setId(3);
-        $kupfer->setBezeichnung("Kupfer");
-        $kupfer->setPreis(4304.29); // EUR je Tonne
+            // Neue Material Entity bauen
+            $materialEntity = new Material();
 
-        // Bestellbare Materialien zurückgeben
-        return array($gold, $silber, $kupfer);
+            // Attribute übernehmen
+            $materialEntity->setId($material['id']);
+            $materialEntity->setBezeichnung($material['bezeichnung']);
+            $materialEntity->setPreis($material['preis']);
+
+            $materialArray[] = $materialEntity;
+        }
+
+        // Array mit verfügbaren Materialien zurückgeben
+        return $materialArray;
+    }
+
+    /**
+     * Liefert das Material Object anhand der übergebenen id
+     * @return Material|null
+     */
+    public function getMaterialById($id) {
+
+        // NOTICE: unperformanter Code!...
+
+        // Alle Materialien laden
+        $materialien = $this->getMaterialien();
+
+        /* @var $material Material */
+        foreach($materialien as $material) {
+
+            // ID Abgleich
+            if($material->getId() == $id) {
+
+                return $material;
+            }
+        }
+    }
+
+    /**
+     * @param mixed $materialTable
+     */
+    public function setMaterialTable($materialTable)
+    {
+        $this->materialTable = $materialTable;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaterialTable()
+    {
+        return $this->materialTable;
     }
 }
