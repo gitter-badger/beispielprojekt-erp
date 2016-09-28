@@ -16,7 +16,7 @@ return array(
         'transport' => array(
             'options' => array(
                 'host'              => '***.***.***.***',
-                'port'              => '465',
+                'port'              => '587',
                 'connection_class'  => 'login',
                 'connection_config' => array(
                     'username' => '***',
