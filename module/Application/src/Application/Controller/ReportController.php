@@ -34,10 +34,7 @@ class ReportController extends AbstractActionController
         // Report Daten von Service abfragen
         $bestellungenProKalenderwoche = $reportService->bestellungenProKalenderwochenCount();
 
-        // DEBUG
-        var_dump($bestellungenProKalenderwoche);
-        die();
-
-        return array();
+        // Report Daten an die view übergeben
+        return array("data" => $bestellungenProKalenderwoche);
     }
 }

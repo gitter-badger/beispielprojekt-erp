@@ -1,0 +1,12 @@
+<?php
+
+// Append Chart.js library
+$this->headScript()->appendFile($this->basePath('js/libs/Chart.js'));
+?>
+<script type="application/javascript">
+
+    // Report Daten
+    var data = <?php echo json_encode($this->data); ?>;
+
+</script>
+<div id="chart"></div>
