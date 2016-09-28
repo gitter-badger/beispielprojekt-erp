@@ -20,9 +20,21 @@ class Module
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
 
+        // ServiceManager benutzen
+        $serviceManager = $e->getApplication()->getServiceManager();
+
+        // Enable php settings from config file into the web app
+        // @see http://stackoverflow.com/a/28393440/2145395
+        $config = $serviceManager->get('config');
+        $phpSettings = $config['php_settings'];
+        if ($phpSettings) {
+            foreach ($phpSettings as $key => $value) {
+                ini_set($key, $value);
+            }
+        }
+
         // Datenbank-Adapter benutzen
-        $sm = $e->getApplication()->getServiceManager();
-        $adapter = $sm->get('Zend\Db\Adapter\Adapter');
+        $adapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
 
         // ...und ihn als globalen Adapter bereitstellen
         \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::setStaticAdapter($adapter);
