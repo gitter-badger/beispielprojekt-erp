@@ -81,8 +81,8 @@ class BestellungController extends AbstractActionController
         /* @var $bestellungService \Application\Service\BestellungService */
         $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
 
-        // ..um alle "neuen" Bestellungen zu laden
-        $model['bestellungen'] = $bestellungService->getBestellungen();
+        // ..um alle "neuen" Bestellungen zu laden (Neuste zuerst)
+        $model['bestellungen'] = $bestellungService->getBestellungen("desc");
 
         // Überprüfen, ob genehmigt Parameter gesetzt und falls ja übergeben
         $model['successGenehmigt'] = $this->params()->fromRoute('genehmigt', false);
