@@ -1,0 +1,63 @@
+<?php
+
+// Append Chart.js und underscore.js library
+$this->headScript()->appendFile($this->basePath('js/libs/Chart.js'))
+                   ->appendFile($this->basePath('js/libs/underscore.js'));
+?>
+<canvas id="chart"></canvas>
+<script type="application/javascript">
+
+    // Report Daten
+    var data = <?php echo json_encode($this->data); ?>;
+
+    // Canvas Kontext laden
+    var ctx = document.getElementById("chart");
+
+    //
+    var labels = [];
+    var dataErstellt = [];
+    var dataGenehmigt = [];
+
+    // Daten in flache Arrays transformieren
+    _.each(data, function (value, key, list) {
+
+        // Labels in speziellem array ablegen
+        labels.push(key);
+
+        // Zahlen in flache Array Struktur überführen
+        dataErstellt.push(value['erstellt']);
+        dataGenehmigt.push(value['genehmigt']);
+    });
+
+    // Diagramm malen
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'erstellt',
+                data: dataErstellt,
+                borderWidth: 1,
+                borderColor: ['rgb(78, 89, 114)'],
+                backgroundColor: ['rgb(96, 113, 150)']
+            },
+            {
+                label: 'genehmigt',
+                data: dataGenehmigt,
+                borderWidth: 1,
+                borderColor: ['rgb(103, 143, 93)'],
+                backgroundColor: ['rgb(129, 189, 113)']
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
+        }
+    });
+
+</script>
