@@ -74,14 +74,21 @@ class BestellungController extends AbstractActionController
      */
     public function uebersichtAction() {
 
+        // Leeres Model-Array initialisieren
+        $model = array();
+
         // Bestellung servive benutzen
         /* @var $bestellungService \Application\Service\BestellungService */
         $bestellungService = $this->serviceLocator->get('Application\Service\Bestellung');
 
         // ..um alle "neuen" Bestellungen zu laden
-        $bestellungen = $bestellungService->getBestellungen();
+        $model['bestellungen'] = $bestellungService->getBestellungen();
 
-        return array("bestellungen" => $bestellungen);
+        // Überprüfen, ob genehmigt Parameter gesetzt und falls ja übergeben
+        $model['successGenehmigt'] = $this->params()->fromRoute('genehmigt', false);
+
+        //
+        return $model;
     }
 
     /**
