@@ -10,37 +10,43 @@ $this->headScript()->appendFile($this->basePath('js/libs/Chart.js'))
     // Report Daten
     var data = <?php echo json_encode($this->data); ?>;
 
-    // Canvas kontext laden
+    // Canvas Kontext laden
     var ctx = document.getElementById("chart");
 
     //
-    var dataLabels = <?php echo json_encode(array_keys($this->data)); ?>;
-    var dataValues = <?php echo json_encode(array_values($this->data)); ?>;
+    var labels = [];
+    var dataErstellt = [];
+    var dataGenehmigt = [];
 
-    var myChart = new Chart(ctx, {
+    // Daten in flache Arrays transformieren
+    _.each(data, function (value, key, list) {
+
+        // Labels in speziellem array ablegen
+        labels.push(key);
+
+        // Zahlen in flache Array Struktur überführen
+        dataErstellt.push(value['erstellt']);
+        dataGenehmigt.push(value['genehmigt']);
+    });
+
+    // Diagramm malen
+    new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: <?php echo json_encode(array_keys($this->data)); ?>,
+            labels: labels,
             datasets: [{
-                label: '# of Votes',
-                data: <?php echo json_encode(array_values($this->data)); ?>,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
+                label: 'erstellt',
+                data: dataErstellt,
+                borderWidth: 1,
+                borderColor: ['rgb(78, 89, 114)'],
+                backgroundColor: ['rgb(96, 113, 150)']
+            },
+            {
+                label: 'genehmigt',
+                data: dataGenehmigt,
+                borderWidth: 1,
+                borderColor: ['rgb(103, 143, 93)'],
+                backgroundColor: ['rgb(129, 189, 113)']
             }]
         },
         options: {
@@ -50,7 +56,7 @@ $this->headScript()->appendFile($this->basePath('js/libs/Chart.js'))
                         beginAtZero:true
                     }
                 }]
-            }
+            },
         }
     });
 
