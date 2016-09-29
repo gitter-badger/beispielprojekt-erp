@@ -11,7 +11,7 @@
         ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        <?php echo $this->headLink()
                         ->prependStylesheet($this->basePath('css/style.css'))
                         ->prependStylesheet($this->basePath('css/libs/bootstrap-theme.min.css'))
                         ->prependStylesheet($this->basePath('css/libs/bootstrap.min.css')) ?>
@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;Beispielprojekt ERP</a>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>">Beispielprojekt ERP</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -50,7 +50,7 @@
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p>Based on stunning Zend Framework. Made with &#x2661;.</p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
