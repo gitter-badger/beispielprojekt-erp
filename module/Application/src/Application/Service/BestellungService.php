@@ -105,15 +105,22 @@ class BestellungService
 
     /**
      * Lädt alle gespeicherten Bestellungen
+     *
+     * @param $idOrder string Legt die Sortierung der ID-Spalte fest. Werte sind 'asc' oder 'desc'. 'asc' ist default
      * @return array
      */
-    public function getBestellungen() {
+    public function getBestellungen($idOrder = "asc") {
 
         // Speziellen Table Gateway benutzen
         $tableGateway = new \Application\TableGateway\Bestellung();
 
+        // Select SQL zusammenbauen
+        $selectSql = new \Zend\Db\Sql\Select();
+        $selectSql->from($tableGateway->getTable())
+                  ->order(array("id" => $idOrder));
+
         // Alle Bestellungen abrufen
-        $bestellungenResultSet = $tableGateway->select(array());
+        $bestellungenResultSet = $tableGateway->selectWith($selectSql);
 
         // Leeres array für die geladenen Bestellung-Entities definieren
         $bestellungen = array();
