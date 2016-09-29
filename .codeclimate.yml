@@ -26,4 +26,5 @@ exclude_paths:
 - public/css/libs/
 - public/js/libs/
 - vendor/
+- documentation/
 - data/
