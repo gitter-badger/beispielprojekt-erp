@@ -1,11 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_gv-oAAJUEeaGRY-VD7cXSg" name="Beispiel-ERP">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_Kj63sIY5EeafI-vLX_sOFg" name="Beispiel-ERP">
+    <ownedAttribute xmi:id="_Wpap4IY5EeafI-vLX_sOFg" name="User" type="_WpXmkIY5EeafI-vLX_sOFg"/>
+    <ownedAttribute xmi:id="_jADPYIY5EeafI-vLX_sOFg" name="Application" type="_jACBQIY5EeafI-vLX_sOFg"/>
+    <ownedAttribute xmi:id="_9KYQMobnEeafI-vLX_sOFg" name="EventManager" type="_9KYQMIbnEeafI-vLX_sOFg"/>
+    <ownedAttribute xmi:id="_61FIkYbuEeafI-vLX_sOFg" name="Controller" type="_61EhgIbuEeafI-vLX_sOFg"/>
+    <ownedAttribute xmi:id="__uw-4YbvEeafI-vLX_sOFg" name="Class1" type="__uwX0IbvEeafI-vLX_sOFg"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_xT8tYIbqEeafI-vLX_sOFg" name="triggerEventUntil"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_I10KUYbtEeafI-vLX_sOFg" name="triggerEventUntil"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ZtX9UYbtEeafI-vLX_sOFg" name="triggerEventUntil"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_OKDZMIbvEeafI-vLX_sOFg" name="onDispatch"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_iahowYbvEeafI-vLX_sOFg" name="...Action"/>
+    <lifeline xmi:id="_WpZbwIY5EeafI-vLX_sOFg" name="User" represents="_Wpap4IY5EeafI-vLX_sOFg" coveredBy="_OH7WcoboEeafI-vLX_sOFg _OH79g4boEeafI-vLX_sOFg"/>
+    <lifeline xmi:id="_jACoUIY5EeafI-vLX_sOFg" name="\Zend\Mvc\Application" represents="_jADPYIY5EeafI-vLX_sOFg" coveredBy="_OH79gIboEeafI-vLX_sOFg _OH79goboEeafI-vLX_sOFg _OH79gYboEeafI-vLX_sOFg _xT9UcIbqEeafI-vLX_sOFg _xT9UdIbqEeafI-vLX_sOFg _I10xYYbtEeafI-vLX_sOFg _I11YcIbtEeafI-vLX_sOFg _ZtYkYIbtEeafI-vLX_sOFg _ZtYkZIbtEeafI-vLX_sOFg"/>
+    <lifeline xmi:id="_9KYQMYbnEeafI-vLX_sOFg" name="Class1" represents="_9KYQMobnEeafI-vLX_sOFg" coveredBy="_xT9UcYbqEeafI-vLX_sOFg _xT9Uc4bqEeafI-vLX_sOFg _xT9UcobqEeafI-vLX_sOFg _I10xYobtEeafI-vLX_sOFg _I10xZIbtEeafI-vLX_sOFg _I10xY4btEeafI-vLX_sOFg _ZtYkYYbtEeafI-vLX_sOFg _ZtYkY4btEeafI-vLX_sOFg _ZtYkYobtEeafI-vLX_sOFg _OKDZMobvEeafI-vLX_sOFg _OKEAQYbvEeafI-vLX_sOFg"/>
+    <lifeline xmi:id="_61FIkIbuEeafI-vLX_sOFg" name="Class1" represents="_61FIkYbuEeafI-vLX_sOFg" coveredBy="_OKDZM4bvEeafI-vLX_sOFg _OKEAQIbvEeafI-vLX_sOFg _OKDZNIbvEeafI-vLX_sOFg _iaiP0YbvEeafI-vLX_sOFg _iai24IbvEeafI-vLX_sOFg _iai24obvEeafI-vLX_sOFg _iai24YbvEeafI-vLX_sOFg _iajd8IbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OH7WcoboEeafI-vLX_sOFg" name="HTTP-Request_sender" covered="_WpZbwIY5EeafI-vLX_sOFg" message="_OH6vYIboEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OH79gIboEeafI-vLX_sOFg" name="HTTP-Request_receiver" covered="_jACoUIY5EeafI-vLX_sOFg" message="_OH6vYIboEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_OH79goboEeafI-vLX_sOFg" name="run" covered="_jACoUIY5EeafI-vLX_sOFg" finish="_OH79gYboEeafI-vLX_sOFg" start="_OH79gIboEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xT9UcIbqEeafI-vLX_sOFg" name="MvcEvent::EVENT_ROUTE_sender" covered="_jACoUIY5EeafI-vLX_sOFg" message="_xT8GUIbqEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xT9UcYbqEeafI-vLX_sOFg" name="MvcEvent::EVENT_ROUTE_receiver" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_xT8GUIbqEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_xT9Uc4bqEeafI-vLX_sOFg" name="triggerEventUntil" covered="_9KYQMYbnEeafI-vLX_sOFg" finish="_xT9UcobqEeafI-vLX_sOFg" start="_xT9UcYbqEeafI-vLX_sOFg" behavior="_xT8tYIbqEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xT9UcobqEeafI-vLX_sOFg" name="triggerEventUntil_finish" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_xT8tYYbqEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xT9UdIbqEeafI-vLX_sOFg" name="ResponseCollection_receiver" covered="_jACoUIY5EeafI-vLX_sOFg" message="_xT8tYYbqEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_I10xYYbtEeafI-vLX_sOFg" name="MvcEvent::EVENT_DISPATCH_sender" covered="_jACoUIY5EeafI-vLX_sOFg" message="_I10KUIbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_I10xYobtEeafI-vLX_sOFg" name="MvcEvent::EVENT_DISPATCH_receiver" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_I10KUIbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_I10xZIbtEeafI-vLX_sOFg" name="triggerEventUntil" covered="_9KYQMYbnEeafI-vLX_sOFg" finish="_I10xY4btEeafI-vLX_sOFg" start="_I10xYobtEeafI-vLX_sOFg" behavior="_I10KUYbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OKDZMobvEeafI-vLX_sOFg" name="onDispatch()_sender" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_OKCyIIbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OKDZM4bvEeafI-vLX_sOFg" name="onDispatch()_receiver" covered="_61FIkIbuEeafI-vLX_sOFg" message="_OKCyIIbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_OKEAQIbvEeafI-vLX_sOFg" name="onDispatch" covered="_61FIkIbuEeafI-vLX_sOFg" finish="_OKDZNIbvEeafI-vLX_sOFg" start="_OKDZM4bvEeafI-vLX_sOFg" behavior="_OKDZMIbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_iaiP0YbvEeafI-vLX_sOFg" name="...Action_sender" covered="_61FIkIbuEeafI-vLX_sOFg" message="_iahowIbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_iai24IbvEeafI-vLX_sOFg" name="...Action_receiver" covered="_61FIkIbuEeafI-vLX_sOFg" message="_iahowIbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_iai24obvEeafI-vLX_sOFg" name="...Action" covered="_61FIkIbuEeafI-vLX_sOFg" finish="_iai24YbvEeafI-vLX_sOFg" start="_iai24IbvEeafI-vLX_sOFg" behavior="_iahowYbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_iai24YbvEeafI-vLX_sOFg" name="...Action_finish" covered="_61FIkIbuEeafI-vLX_sOFg" message="_iaiP0IbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_iajd8IbvEeafI-vLX_sOFg" name="Operation_2_reply_receiver" covered="_61FIkIbuEeafI-vLX_sOFg" message="_iaiP0IbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OKDZNIbvEeafI-vLX_sOFg" name="onDispatch_finish" covered="_61FIkIbuEeafI-vLX_sOFg" message="_OKDZMYbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OKEAQYbvEeafI-vLX_sOFg" name="Operation_1_reply_receiver" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_OKDZMYbvEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_I10xY4btEeafI-vLX_sOFg" name="ResponseCollection_sender" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_I10xYIbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_I11YcIbtEeafI-vLX_sOFg" name="ResponseCollection_receiver" covered="_jACoUIY5EeafI-vLX_sOFg" message="_I10xYIbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZtYkYIbtEeafI-vLX_sOFg" name="MvcEvent::EVENT_FINISH_sender" covered="_jACoUIY5EeafI-vLX_sOFg" message="_ZtX9UIbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZtYkYYbtEeafI-vLX_sOFg" name="MvcEvent::EVENT_FINISH_receiver" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_ZtX9UIbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_ZtYkY4btEeafI-vLX_sOFg" name="triggerEventUntil" covered="_9KYQMYbnEeafI-vLX_sOFg" finish="_ZtYkYobtEeafI-vLX_sOFg" start="_ZtYkYYbtEeafI-vLX_sOFg" behavior="_ZtX9UYbtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZtYkYobtEeafI-vLX_sOFg" name="triggerEventUntil_finish" covered="_9KYQMYbnEeafI-vLX_sOFg" message="_ZtX9UobtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZtYkZIbtEeafI-vLX_sOFg" name="Operation_3_reply_receiver" covered="_jACoUIY5EeafI-vLX_sOFg" message="_ZtX9UobtEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OH79gYboEeafI-vLX_sOFg" name="run_finish" covered="_jACoUIY5EeafI-vLX_sOFg" message="_OH7WcYboEeafI-vLX_sOFg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OH79g4boEeafI-vLX_sOFg" name="Operation_1_reply_receiver" covered="_WpZbwIY5EeafI-vLX_sOFg" message="_OH7WcYboEeafI-vLX_sOFg"/>
+    <message xmi:id="_OH6vYIboEeafI-vLX_sOFg" name="HTTP-Request" receiveEvent="_OH79gIboEeafI-vLX_sOFg" sendEvent="_OH7WcoboEeafI-vLX_sOFg" signature="_OH6IUIboEeafI-vLX_sOFg"/>
+    <message xmi:id="_OH7WcYboEeafI-vLX_sOFg" name="HTTP-Response" messageSort="reply" receiveEvent="_OH79g4boEeafI-vLX_sOFg" sendEvent="_OH79gYboEeafI-vLX_sOFg"/>
+    <message xmi:id="_xT8GUIbqEeafI-vLX_sOFg" name="MvcEvent::EVENT_ROUTE" receiveEvent="_xT9UcYbqEeafI-vLX_sOFg" sendEvent="_xT9UcIbqEeafI-vLX_sOFg" signature="_xT64MIbqEeafI-vLX_sOFg"/>
+    <message xmi:id="_xT8tYYbqEeafI-vLX_sOFg" name="ResponseCollection" messageSort="reply" receiveEvent="_xT9UdIbqEeafI-vLX_sOFg" sendEvent="_xT9UcobqEeafI-vLX_sOFg"/>
+    <message xmi:id="_I10KUIbtEeafI-vLX_sOFg" name="MvcEvent::EVENT_DISPATCH" receiveEvent="_I10xYobtEeafI-vLX_sOFg" sendEvent="_I10xYYbtEeafI-vLX_sOFg" signature="_I1zjQIbtEeafI-vLX_sOFg"/>
+    <message xmi:id="_I10xYIbtEeafI-vLX_sOFg" name="ResponseCollection" messageSort="reply" receiveEvent="_I11YcIbtEeafI-vLX_sOFg" sendEvent="_I10xY4btEeafI-vLX_sOFg"/>
+    <message xmi:id="_ZtX9UIbtEeafI-vLX_sOFg" name="MvcEvent::EVENT_FINISH" receiveEvent="_ZtYkYYbtEeafI-vLX_sOFg" sendEvent="_ZtYkYIbtEeafI-vLX_sOFg" signature="_ZtXWQIbtEeafI-vLX_sOFg"/>
+    <message xmi:id="_ZtX9UobtEeafI-vLX_sOFg" name="ResponseCollection" messageSort="reply" receiveEvent="_ZtYkZIbtEeafI-vLX_sOFg" sendEvent="_ZtYkYobtEeafI-vLX_sOFg"/>
+    <message xmi:id="_OKCyIIbvEeafI-vLX_sOFg" name="onDispatch()" receiveEvent="_OKDZM4bvEeafI-vLX_sOFg" sendEvent="_OKDZMobvEeafI-vLX_sOFg" signature="_OKCLEIbvEeafI-vLX_sOFg"/>
+    <message xmi:id="_OKDZMYbvEeafI-vLX_sOFg" name="actionResponse" messageSort="reply" receiveEvent="_OKEAQYbvEeafI-vLX_sOFg" sendEvent="_OKDZNIbvEeafI-vLX_sOFg"/>
+    <message xmi:id="_iahowIbvEeafI-vLX_sOFg" name="...Action()" receiveEvent="_iai24IbvEeafI-vLX_sOFg" sendEvent="_iaiP0YbvEeafI-vLX_sOFg" signature="_iahBsIbvEeafI-vLX_sOFg"/>
+    <message xmi:id="_iaiP0IbvEeafI-vLX_sOFg" name="actionResponse" messageSort="reply" receiveEvent="_iajd8IbvEeafI-vLX_sOFg" sendEvent="_iai24YbvEeafI-vLX_sOFg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WpXmkIY5EeafI-vLX_sOFg" name="User"/>
   <packagedElement xmi:type="uml:Node" xmi:id="_m5MB8AJUEeaGRY-VD7cXSg" name="Datenbank">
     <nestedClassifier xmi:type="uml:Component" xmi:id="_6KCnkAJUEeaGRY-VD7cXSg" name="MySQL"/>
+    <nestedClassifier xmi:type="uml:Node" xmi:id="_ljyrUIblEeafI-vLX_sOFg" name="Datenbank">
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_ljyrUYblEeafI-vLX_sOFg" name="MySQL"/>
+    </nestedClassifier>
   </packagedElement>
   <packagedElement xmi:type="uml:Node" xmi:id="_qeyPoAJUEeaGRY-VD7cXSg" name="Webserver">
     <nestedClassifier xmi:type="uml:Component" xmi:id="_8NMLEAJUEeaGRY-VD7cXSg" name="Apache">
-      <packagedElement xmi:type="uml:Component" xmi:id="_-Cm0kAJUEeaGRY-VD7cXSg" name="Zend Framework 2"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_-Cm0kAJUEeaGRY-VD7cXSg" name="Zend Framework 2">
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_jACBQIY5EeafI-vLX_sOFg" name="\Zend\Mvc\Application">
+          <ownedOperation xmi:id="_OH6IUIboEeafI-vLX_sOFg" name="Operation_1"/>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_9KYQMIbnEeafI-vLX_sOFg" name="\Zend\EventManager\EventManager">
+          <ownedOperation xmi:id="_xT64MIbqEeafI-vLX_sOFg" name="Operation_1"/>
+          <ownedOperation xmi:id="_I1zjQIbtEeafI-vLX_sOFg" name="Operation_2"/>
+          <ownedOperation xmi:id="_ZtXWQIbtEeafI-vLX_sOFg" name="Operation_3"/>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_61EhgIbuEeafI-vLX_sOFg" name="\Zend\Mvc\Controller\AbstractActionController">
+          <ownedOperation xmi:id="_OKCLEIbvEeafI-vLX_sOFg" name="Operation_1"/>
+          <ownedOperation xmi:id="_iahBsIbvEeafI-vLX_sOFg" name="Operation_2"/>
+        </nestedClassifier>
+      </packagedElement>
       <packagedElement xmi:type="uml:Component" xmi:id="__pONEAJUEeaGRY-VD7cXSg" name="PHP"/>
     </nestedClassifier>
   </packagedElement>
@@ -33,4 +108,5 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dTlc0QJYEeaFUI-YOFQM1g" value="*"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__uwX0IbvEeafI-vLX_sOFg" name="Class1"/>
 </uml:Model>
