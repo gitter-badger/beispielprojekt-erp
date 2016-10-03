@@ -3,6 +3,8 @@
 
 # Unser tolles ERP System
 
+[![Join the chat at https://gitter.im/beispielprojekt-erp/Lobby](https://badges.gitter.im/beispielprojekt-erp/Lobby.svg)](https://gitter.im/beispielprojekt-erp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Eckdaten
 
 Wir nutzen PHP als Sprache. Als Framework setzen wir Zend Framework 2 ein.
